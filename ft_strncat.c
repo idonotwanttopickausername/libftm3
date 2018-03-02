@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 19:29:01 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/28 15:50:09 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/01 14:59:37 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 
 	y = 0;
 	x = ft_strlen(s1);
-	while (y < n)
+	while (y < n && s2[y])
 		s1[x++] = s2[y++];
 	s1[x] = '\0';
 	return (s1);

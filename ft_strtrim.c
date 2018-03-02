@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 19:11:42 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/28 18:13:21 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/01 21:01:13 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*ft_strtrim(char const *s)
 	l = ft_strlen(s);
 	x = 0;
 	y = 0;
-	res = (char*)malloc(sizeof(char) * l);
+	res = (char*)malloc(sizeof(char) * l + 1);
 	if (!res)
 		return (NULL);
 	while (s[x])
 	{
-		if (x == 0 || x == l)
+		if (x == 0 || x == l - 1)
 			if(s[x] == ' ' || s[x] == '\n' || s[x] == '\t')
 				x++;
 		if (!s[x])
@@ -36,5 +36,6 @@ char	*ft_strtrim(char const *s)
 		y++;
 		x++;
 	}
+	res[x] = '\0';
 	return (res);
 }

@@ -6,13 +6,11 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 19:28:34 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/28 19:29:00 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/01 20:07:43 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	ft_putchar(char c);
 
 int		ft_counter(int argc, char **argv)
 {

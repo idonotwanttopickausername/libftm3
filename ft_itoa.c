@@ -6,46 +6,46 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 20:33:10 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/27 19:27:59 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/01 22:44:40 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	aux(int n, char *res)
+void	aux(int n, char *res, size_t x, int m)
 {
-	int	x;
-	int	z;
-
-	x = 0;
-	if (n < 0)
+	while (n)
 	{
-		res[x++] = '-';
-		n *= -1;
-	}
-	z = n;
-	while (z)
-	{
-		z /= 10;
-		x++;
-	}
-	res[x--] = '\0';
-	while (x >= 0)
-	{
-		res[x--] = (n % 10 + 48);
+		res[--x] = (n % 10 + 48);
 		n /= 10;
 	}
+	if (m == 1)
+		res[--x] = '-';
 }
 
 char	*ft_itoa(int n)
 {
 	char	*res;
+	size_t	x;
+	int		b;
+	int		m;
 
-	if (n == -2147483648)
-		return ("-2147483648");
-	res = (char*)malloc(sizeof(char) * 12);
-	if (!res)
-		return (NULL);
-	aux(n, res);
+	x = 0;
+	m = 0;
+	if (n < 0)
+	{
+		x++;
+		n *= -1;
+		m = 1;
+	}
+	b = n;
+	while (b)
+	{
+		b /= 10;
+		x++;
+	}
+	res = ft_strnew(x);
+	if (res)
+		aux(n, res, x, m);
 	return (res);
 }

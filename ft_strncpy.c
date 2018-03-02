@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 20:53:36 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/27 17:51:00 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/02/28 21:25:32 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 		dst[x] = src[x];
 		x++;
 	}
-	dst[x] = '\0';
+	while (x < len)
+		dst[x++] = '\0';
 	return (dst);
 }
