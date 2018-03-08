@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 17:51:31 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/28 17:32:12 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:03:53 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_striter(char *s, void (*f)(char *))
 {
 	size_t x;
 
-	x = 0;
-	while (s[x])
+	if (s && f)
 	{
-		f(s + x);
-		x++;
+		x = 0;
+		while (s[x])
+		{
+			f(s + x);
+			x++;
+		}
 	}
 }

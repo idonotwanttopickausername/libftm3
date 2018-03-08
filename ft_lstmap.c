@@ -6,54 +6,30 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 14:58:27 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/03/07 22:12:28 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 10:27:17 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
-{
-	t_list	*l;
 
-	l = malloc(sizeof(t_list));
-	l = f(lst);
-	if (lst->next)
-		ft_lstmap(lst->next, f);
-	return (l);
-}
-
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
-{
-	t_list	*l;
-
-	l = malloc(sizeof(t_list));
-	l = f(lst);
-	if (!l)
-		return (NULL);
-	if (lst->next)
-		ft_lstmap(lst->next, f);
-	return (l);
-}
-*/
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list		*new;
-	t_list		*l;
+	t_list		*l1;
+	t_list		*l2;
 
 	if (!lst)
 		return (NULL);
-	l = f(lst);
-	new = l;
+	l2 = f(lst);
+	l1 = l2;
 	while (lst->next)
 	{
 		lst = lst->next;
-		if (!(l->next = f(lst)))
+		if (!(l2->next = f(lst)))
 		{
-			free(l->next);
+			free(l2->next);
 			return (NULL);
 		}
-		l = l->next;
+		l2 = l2->next;
 	}
-	return (new);
+	return (l1);
 }

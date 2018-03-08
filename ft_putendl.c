@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 21:02:41 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/24 21:05:24 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:24:05 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putstr(s);
-	write(1, "\n", 1);
+	if (s)
+	{
+		ft_putstr(s);
+		write(1, "\n", 1);
+	}
 }

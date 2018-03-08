@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 20:33:10 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/03/07 16:49:52 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 10:38:43 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*ec(int n)
 		return (ft_strdup("-2147483648"));
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*res;
 	size_t	x;

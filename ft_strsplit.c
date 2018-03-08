@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 19:51:25 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/03/07 15:52:14 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:20:57 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,24 @@ char			**ft_strsplit(char const *s, char c)
 	int		a;
 
 	a = 0;
-	n = len_a((const char *)s, c);
-	res = (char **)malloc(sizeof(*res) * (len_a((const char *)s, c) + 1));
-	if (!res)
-		return (NULL);
-	while (n--)
+	if (s)
 	{
-		while (*s == c && *s)
-			s++;
-		res[a] = ft_strsub((const char *)s, 0, len_b((const char *)s, c));
-		if (!res[a])
+		n = len_a((const char *)s, c);
+		res = (char **)malloc(sizeof(*res) * (len_a((const char *)s, c) + 1));
+		if (!res)
 			return (NULL);
-		s = s + len_b(s, c);
-		a++;
+		while (n--)
+		{
+			while (*s == c && *s)
+				s++;
+			res[a] = ft_strsub((const char *)s, 0, len_b((const char *)s, c));
+			if (!res[a])
+				return (NULL);
+			s = s + len_b(s, c);
+			a++;
+		}
+		res[a] = NULL;
+		return (res);
 	}
-	res[a] = NULL;
-	return (res);
+	return (NULL);
 }

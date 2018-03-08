@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 21:10:55 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/24 21:16:02 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 11:23:16 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	ft_putstr_fd(char const *s, int fd)
 	int x;
 
 	x = 0;
-	while (s[x])
+	if (s)
 	{
-		write(fd, &s[x], 1);
-		x++;
+		while (s[x])
+		{
+			write(fd, &s[x], 1);
+			x++;
+		}
 	}
 }

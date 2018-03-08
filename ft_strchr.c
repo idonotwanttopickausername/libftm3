@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 19:51:06 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/02/28 17:52:31 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 10:19:09 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	x;
-	char *str;
+	int		x;
+	char	*str;
 
 	x = 0;
 	str = (char*)s;
