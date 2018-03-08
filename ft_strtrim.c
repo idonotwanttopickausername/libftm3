@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 19:11:42 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/03/01 21:01:13 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/07 11:59:44 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ char	*ft_strtrim(char const *s)
 	int		y;
 
 	l = ft_strlen(s);
-	x = 0;
-	y = 0;
-	res = (char*)malloc(sizeof(char) * l + 1);
+	if (!s)
+		return (NULL);
+	while (s[l - 1] == ' ' || s[l - 1] == '\t' || s[l - 1] == '\n')
+		l--;
+	x = -1;
+	while (s[++x] == ' ' || s[x] == '\n' || s[x] == '\t')
+				l--;
+	if (l < 0)
+		l = 0;
+	res = ft_strnew(l);
 	if (!res)
 		return (NULL);
-	while (s[x])
-	{
-		if (x == 0 || x == l - 1)
-			if(s[x] == ' ' || s[x] == '\n' || s[x] == '\t')
-				x++;
-		if (!s[x])
-			break ;
-		res[y] = s[x];
-		y++;
-		x++;
-	}
+	y = x;
+	x = -1;
+	while (l > ++x)
+		res[x] = s[x + y];
 	res[x] = '\0';
 	return (res);
 }

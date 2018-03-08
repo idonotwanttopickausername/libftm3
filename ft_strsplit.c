@@ -6,95 +6,69 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 19:51:25 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/03/01 21:11:17 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/07 15:52:14 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		len_a(char const *s, char c)
+static int		len_a(const char *s, char c)
 {
-	int n;
-	int x;
+	int		n;
+	int		m;
+	int		x;
 
-	n = 1;
+	m = 0;
+	n = 0;
 	x = 0;
-	while (s[x])
+	while (s[x] != '\0')
 	{
-		if (s[x++] == c)
+		if (m == 1 && s[x] == c)
+			m = 0;
+		if (m == 0 && s[x] != c)
 		{
-			while (s[x] == c)
-				x++;
-			if (s[x])
-			{
-				while (s[x] != c && s[x])
-					x++;
-				n++;
-			}
+			m = 1;
+			n++;
 		}
-		else
-			x++;
+		x++;
 	}
 	return (n);
 }
 
-int		len_b(char const *s, char c)
+static int		len_b(const char *s, char c)
 {
-	int n;
-	int x;
+	int		n;
 
-	n = 1;
-	x = 0;
-	while (s[x] == c)
-		x++;
-	while (s[x] != c && s[x])
+	n = 0;
+	while (*s != c && *s)
 	{
-		x++;
+		s++;
 		n++;
 	}
 	return (n);
 }
 
-int		ft_workhorse(char *src, char **dst, char c, int x)
-{
-	int	a;
-	int b;
-
-	a = 0;
-	while (src[x])
-	{
-		if (src[x++] == c)
-		{
-			while (src[x] == c)
-				x++;
-			if (src[x])
-			{
-				b = 0;
-				dst[a] = (char*)malloc(len_b(src, c));
-				while (src[x] != c && src[x])
-					dst[a][b++] = src[x++];
-				dst[a][b] = '\0';
-				a++;
-			}
-		}
-		else
-			x++;
-	}
-	return (a);
-}
-
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**res;
-	int		x;
+	int		n;
 	int		a;
 
-	x = 0;
 	a = 0;
-	res = NULL;
-	*res = (char*)malloc(len_a(s, c));
-	a = ft_workhorse((char*)s, res, c, x);
-	res[a] = (char*)malloc(1);
+	n = len_a((const char *)s, c);
+	res = (char **)malloc(sizeof(*res) * (len_a((const char *)s, c) + 1));
+	if (!res)
+		return (NULL);
+	while (n--)
+	{
+		while (*s == c && *s)
+			s++;
+		res[a] = ft_strsub((const char *)s, 0, len_b((const char *)s, c));
+		if (!res[a])
+			return (NULL);
+		s = s + len_b(s, c);
+		a++;
+	}
 	res[a] = NULL;
 	return (res);
 }
