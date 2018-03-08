@@ -6,7 +6,7 @@
 /*   By: cgoolsby <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 19:11:42 by cgoolsby          #+#    #+#             */
-/*   Updated: 2018/03/08 11:17:29 by cgoolsby         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:48:22 by cgoolsby         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strtrim(char const *s)
 	int		x;
 	int		y;
 
-	l = ft_strlen(s);
 	if (s)
 	{
+		l = ft_strlen(s);
 		while (s[l - 1] == ' ' || s[l - 1] == '\t' || s[l - 1] == '\n')
 			l--;
 		x = -1;
